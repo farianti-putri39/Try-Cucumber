@@ -4,7 +4,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        glue = {"MyStepdefs.stepdefs.loginstepdef"},
+        glue = {"stepDef"},
         features = {"src/test/resources"},
         plugin = {"pretty"}
 )
