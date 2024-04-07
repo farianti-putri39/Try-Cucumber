@@ -33,14 +33,22 @@ jobs:
     # Install browser
     - name: Setup Chrome
       uses: browser-actions/setup-chrome@v1.5.0
-
+      
     # Setup gradlew
     - name: Setup gradlew
-      run: chmod +x gradlew
+      run: chmod +x gradlew 
+      
+    # Execute gradle command for running cucumber test
+    - name: Execute Test
+      run: ./gradlew cucumber
 
-    # Execute gradle command
-    - name: Execute gradle
-      run: .\gradlew cucumber
+    # Archive Test Result
+    - name: Archive Test Result
+      uses: actions/upload-artifact@v3.1.0
+      if: always()
+      with:
+        name: Cucumber Report
+        path: reports
     
     # NOTE: The Gradle Wrapper is the default and recommended way to run Gradle (https://docs.gradle.org/current/userguide/gradle_wrapper.html).
     # If your project does not have the Gradle Wrapper configured, you can use the following configuration to run Gradle with a specified version.
