@@ -12,3 +12,9 @@ This repository is made for the purpose of online test/homework for Web UI Autom
 How to Run
 Login feature: Click run on Resources > login.feature
 Add to Cart feature: Click run on Resources > addtocart.feature
+
+or
+
+Run command on terminal ".\gradlew clean test"
+
+Screenshots available on "Screenshots" folder
