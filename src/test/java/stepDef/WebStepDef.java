@@ -1,38 +1,23 @@
 package stepDef;
-
-import io.cucumber.java.After;
-import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.chrome.ChromeDriver;
-import page.HomePage;
-import page.LoginPage;
-import baseTest.BaseTest;
+import pages.LoginPage;
+import pages.HomePage;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+public class WebStepDef {
 
-public class MyStepdefs extends BaseTest{
-
-    ChromeDriver driver;
     LoginPage loginPage;
     HomePage homePage;
 
-    @Before
-    public void beforeTest(){
-        driver = new ChromeDriver();
+    public WebStepDef() {
+        this.loginPage = new LoginPage();
+        this.homePage = new HomePage();
     }
-
-    @After
-    public void afterTest(){
-        driver.close();
-    }
-
 
     @Given("User is on login page")
     public void userIsOnLoginPage() {
-        loginPage = new LoginPage(driver);
         loginPage.goToLoginPage();
     }
 
@@ -48,7 +33,6 @@ public class MyStepdefs extends BaseTest{
 
     @Then("User is logged in")
     public void userIsLoggedIn() {
-        homePage = new HomePage(driver);
         homePage.validateBackpackDisplayed();
     }
 

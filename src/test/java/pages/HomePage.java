@@ -1,12 +1,12 @@
-package page;
+package pages;
+
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.chrome.ChromeDriver;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static stepDef.Hooks.driver;
+
 public class HomePage {
-
-    ChromeDriver driver;
 
     By backpackItem = By.xpath("//*[@id=\"item_4_title_link\"]/div");
     By backpackAddToCart = By.cssSelector("#add-to-cart-sauce-labs-backpack");
@@ -17,33 +17,29 @@ public class HomePage {
     By testShirtAddToCart = By.cssSelector("#add-to-cart-test\\.allthethings\\(\\)-t-shirt-\\(red\\)");
     By cartCounter = By.xpath("//*[@id=\"shopping_cart_container\"]/a/span");
     By backpackRemove = By.cssSelector("#remove-sauce-labs-backpack");
-    By cartIcon= By.cssSelector("#shopping_cart_container > a");
+    By cartIcon = By.cssSelector("#shopping_cart_container > a");
 
-    public HomePage(ChromeDriver driver){
-        this.driver = driver;
+    public void validateBackpackDisplayed() {
+        assertThat(driver.findElement(backpackItem).isDisplayed()).isEqualTo(true);
     }
 
-    public void validateBackpackDisplayed(){
-        assertTrue(driver.findElement(backpackItem).isDisplayed());
-    }
-
-    public void clickBackpackAddToCart(){
+    public void clickBackpackAddToCart() {
         driver.findElement(backpackAddToCart).click();
     }
 
-    public void validateCartCounter(){
-        assertTrue(driver.findElement(cartCounter).isDisplayed());
+    public void validateCartCounter() {
+        assertThat(driver.findElement(cartCounter).isDisplayed()).isEqualTo(true);
     }
 
-    public void clickBackpackRemove(){
+    public void clickBackpackRemove() {
         driver.findElement(backpackRemove).click();
     }
 
-    public void validateCartNoItem(){
-        assertTrue(driver.findElement(cartIcon).isDisplayed());
+    public void validateCartNoItem() {
+        assertThat(driver.findElement(cartIcon).isDisplayed()).isEqualTo(true);
     }
 
-    public void addAllItemToCart(){
+    public void addAllItemToCart() {
         driver.findElement(backpackAddToCart).click();
         driver.findElement(bikeLightAddToCart).click();
         driver.findElement(boltShirtAddToCart).click();
